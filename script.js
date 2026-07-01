@@ -1,14 +1,8 @@
-// ═══════════════════════════════════════════════════════════════
-//  PORTFOLIO — interacciones
-// ═══════════════════════════════════════════════════════════════
-
-// 1) Header: añade fondo al hacer scroll
 const header = document.querySelector('header');
 addEventListener('scroll', () => {
   header.classList.toggle('scrolled', scrollY > 40);
 }, { passive: true });
 
-// 2) Reveal: las secciones aparecen al entrar en pantalla
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
@@ -16,12 +10,6 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-// 3) Reels: ahora cargan directamente para mostrar la portada de Vimeo.
-
-// ═══════════════════════════════════════════════════════════════
-//  4) CURSOR — punto REC rojo parpadeando que sigue al ratón
-//     Solo en ratón (no en móvil/táctil). Crece sobre elementos clicables.
-// ═══════════════════════════════════════════════════════════════
 (function () {
   if (!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
   document.body.classList.add('cam-cursor');
